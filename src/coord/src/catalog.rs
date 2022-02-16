@@ -700,6 +700,7 @@ pub struct Source {
     pub connector: SourceConnector,
     pub persist_details: Option<SerializedSourcePersistDetails>,
     pub desc: RelationDesc,
+    pub depends_on: Vec<GlobalId>,
 }
 
 impl Source {
@@ -846,7 +847,7 @@ impl CatalogItem {
             CatalogItem::Func(_) => &[],
             CatalogItem::Index(idx) => &idx.depends_on,
             CatalogItem::Sink(sink) => &sink.depends_on,
-            CatalogItem::Source(_) => &[],
+            CatalogItem::Source(source) => &source.depends_on,
             CatalogItem::Table(table) => &table.depends_on,
             CatalogItem::Type(typ) => &typ.depends_on,
             CatalogItem::View(view) => &view.depends_on,
@@ -1195,6 +1196,7 @@ impl Catalog {
                             },
                             persist_details: None,
                             desc: log.variant.desc(),
+                            depends_on: vec![],
                         }),
                     );
                 }
@@ -2557,6 +2559,7 @@ impl Catalog {
                     connector: source.connector,
                     persist_details: source_persist_details,
                     desc: source.desc,
+                    depends_on: source.depends_on,
                 })
             }
             Plan::CreateView(CreateViewPlan { view, .. }) => {

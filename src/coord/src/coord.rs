@@ -2230,6 +2230,7 @@ impl Coordinator {
             connector: plan.source.connector,
             persist_details,
             desc: plan.source.desc,
+            depends_on: plan.source.depends_on,
         };
         ops.push(catalog::Op::CreateItem {
             id: source_id,
@@ -3645,6 +3646,10 @@ impl Coordinator {
                 if since.less_equal(&timestamp) {
                     None
                 } else {
+                    eprintln!(
+                        "SOURCE {:?} has since {:?}; timestamp: {:?}",
+                        id, since, timestamp
+                    );
                     Some(since)
                 }
             });
