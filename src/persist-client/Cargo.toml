@@ -29,10 +29,8 @@ name = "persistcli"
 [dependencies]
 anyhow = { version = "1.0.57", features = ["backtrace"] }
 async-stream = "0.3.3"
-async-trait = "0.1.0"
 bincode = "1.3.3"
 bytes = "1.1.0"
-clap = { version = "3.1.18", features = ["derive", "env"] }
 differential-dataflow = { git = "https://github.com/TimelyDataflow/differential-dataflow.git" }
 futures = "0.3.21"
 futures-util = "0.3"
@@ -43,11 +41,13 @@ proptest = { git = "https://github.com/MaterializeInc/proptest.git", default-fea
 proptest-derive = { git = "https://github.com/MaterializeInc/proptest.git" }
 serde = { version = "1.0.137", features = ["derive"] }
 timely = { git = "https://github.com/TimelyDataflow/timely-dataflow", default-features = false, features = ["bincode"] }
-tokio = { version = "1.18.2", default-features = false, features = ["macros", "sync", "rt", "rt-multi-thread", "time"] }
+tokio = { version = "1.19.2", default-features = false, features = ["macros", "sync", "rt", "rt-multi-thread", "time"] }
 tracing = "0.1.34"
-uuid = { version = "1.0.0", features = ["v4"] }
+uuid = { version = "1.1.1", features = ["v4"] }
 
 [dev-dependencies]
+async-trait = "0.1.56"
+clap = { version = "3.1.18", features = ["derive", "env"] }
 criterion = { git = "https://github.com/MaterializeInc/criterion.rs.git", features = ["html_reports"] }
 futures-task = "0.3.21"
 num_cpus = "1.13.1"

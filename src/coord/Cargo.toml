@@ -10,7 +10,7 @@ publish = false
 anyhow = "1.0.57"
 bytes = "1.1.0"
 chrono = { version = "0.4.0", default-features = false, features = ["std"] }
-const_format = "0.2.23"
+const_format = "0.2.24"
 dec = "0.4.8"
 derivative = "2.2.0"
 differential-dataflow = { git = "https://github.com/TimelyDataflow/differential-dataflow.git" }
@@ -23,7 +23,7 @@ mz-ccsr = { path = "../ccsr" }
 mz-dataflow-types = { path = "../dataflow-types" }
 mz-expr = { path = "../expr" }
 mz-kafka-util = { path = "../kafka-util" }
-mz-ore = { path = "../ore", features = ["task"] }
+mz-ore = { path = "../ore", features = ["task", "tracing_"] }
 mz-persist-types = { path = "../persist-types" }
 mz-pgrepr = { path = "../pgrepr" }
 mz-postgres-util = { path = "../postgres-util" }
@@ -43,13 +43,13 @@ serde = "1.0.137"
 serde_json = "1.0.81"
 tempfile = "3.2.0"
 timely = { git = "https://github.com/TimelyDataflow/timely-dataflow", default-features = false, features = ["bincode"] }
-tokio = { version = "1.18.2", features = ["rt", "time"] }
+tokio = { version = "1.19.2", features = ["rt", "time"] }
 tokio-postgres = { git = "https://github.com/MaterializeInc/rust-postgres" }
-tokio-stream = "0.1.8"
+tokio-stream = "0.1.9"
 tracing = "0.1.34"
 thiserror = "1.0.31"
 uncased = "0.9.7"
-uuid = { version = "1.0.0", features = ["v4"] }
+uuid = { version = "1.1.1", features = ["v4"] }
 
 [dev-dependencies]
 datadriven = "0.6.0"
