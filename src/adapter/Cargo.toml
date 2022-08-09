@@ -8,7 +8,7 @@ publish = false
 
 [dependencies]
 anyhow = "1.0.58"
-bytes = "1.1.0"
+bytes = "1.2.1"
 chrono = { version = "0.4.0", default-features = false, features = ["std"] }
 const_format = "0.2.26"
 dec = "0.4.8"
@@ -27,6 +27,7 @@ mz-expr = { path = "../expr" }
 mz-kafka-util = { path = "../kafka-util" }
 mz-ore = { path = "../ore", features = ["task", "tracing_"] }
 mz-persist-types = { path = "../persist-types" }
+mz-persist-client = { path = "../persist-client" }
 mz-pgcopy = { path = "../pgcopy" }
 mz-pgrepr = { path = "../pgrepr" }
 mz-postgres-util = { path = "../postgres-util" }
@@ -42,9 +43,9 @@ prost = { version = "0.10.3", features = ["no-recursion-limit"] }
 rand = "0.8.5"
 rdkafka = { git = "https://github.com/fede1024/rust-rdkafka.git", features = ["cmake-build", "ssl-vendored", "libz-static", "zstd"] }
 regex = "1.6.0"
-rusqlite = { version = "0.27.0", features = ["bundled", "unlock_notify"] }
+rusqlite = { version = "0.28.0", features = ["bundled", "unlock_notify"] }
 semver = "1.0.12"
-serde = "1.0.138"
+serde = "1.0.140"
 serde_json = "1.0.82"
 timely = { git = "https://github.com/TimelyDataflow/timely-dataflow", default-features = false, features = ["bincode"] }
 tokio = { version = "1.19.2", features = ["rt", "time"] }
@@ -56,4 +57,9 @@ uncased = "0.9.7"
 uuid = { version = "1.1.2", features = ["v4"] }
 
 [dev-dependencies]
+criterion = { git = "https://github.com/MaterializeInc/criterion.rs.git", features = ["async_tokio"] }
 datadriven = "0.6.0"
+
+[[bench]]
+name = "catalog"
+harness = false
